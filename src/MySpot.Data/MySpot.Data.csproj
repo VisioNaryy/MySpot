@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <Folder Include="Policies" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MySpot.Domain.Data\MySpot.Domain.Data.csproj" />
+      <ProjectReference Include="..\MySpot.Domain\MySpot.Domain.csproj" />
+    </ItemGroup>
+
+</Project>
