@@ -8,6 +8,10 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="7.0.4" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
 
@@ -16,12 +20,12 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\MySpot.Data\MySpot.Data.csproj" />
+    <ProjectReference Include="..\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\MySpot.Domain.Api\MySpot.Domain.Api.csproj" />
     <ProjectReference Include="..\MySpot.Domain.Data\MySpot.Domain.Data.csproj" />
     <ProjectReference Include="..\MySpot.Domain\MySpot.Domain.csproj" />
-    <ProjectReference Include="..\MySpot.Logging\MySpot.Logging.csproj" />
-    <ProjectReference Include="..\MySpot.Services\MySpot.Services.csproj" />
+    <ProjectReference Include="..\MySpot.Infrastructure.Logging\MySpot.Infrastructure.Logging.csproj" />
+    <ProjectReference Include="..\MySpot.Application.Services\MySpot.Application.Services.csproj" />
   </ItemGroup>
 
 </Project>

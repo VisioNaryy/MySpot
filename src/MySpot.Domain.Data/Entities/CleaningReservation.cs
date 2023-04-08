@@ -1,6 +1,6 @@
-﻿using MySpot.Comain.Data.ValueObjects;
+﻿using MySpot.Domain.Data.ValueObjects;
 
-namespace MySpot.Comain.Data.Entities;
+namespace MySpot.Domain.Data.Entities;
 
 public class CleaningReservation : Reservation
 {

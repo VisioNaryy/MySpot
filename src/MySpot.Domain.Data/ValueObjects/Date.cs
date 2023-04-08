@@ -1,4 +1,4 @@
-namespace MySpot.Comain.Data.ValueObjects;
+namespace MySpot.Domain.Data.ValueObjects;
 
 public sealed record Date
 {

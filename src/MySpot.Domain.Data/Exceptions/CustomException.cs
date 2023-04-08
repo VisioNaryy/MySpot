@@ -1,4 +1,4 @@
-namespace MySpot.Comain.Data.Exceptions;
+namespace MySpot.Domain.Data.Exceptions;
 
 public abstract class CustomException : Exception
 {

@@ -1,16 +1,16 @@
-﻿using MySpot.Comain.Data.Exceptions;
-using MySpot.Comain.Data.ValueObjects;
+﻿using MySpot.Domain.Data.Exceptions;
+using MySpot.Domain.Data.ValueObjects;
 
-namespace MySpot.Comain.Data.Entities;
+namespace MySpot.Domain.Data.Entities;
 
 public class WeeklyParkingSpot
 {
     public const int MaximumCapacity = 2;
 
     public ParkingSpotId Id { get; }
-    public Week Week { get; private set; }
-    public ParkingSpotName Name { get; private set; }
-    public Capacity Capacity { get; private set; }
+    public Week Week { get; }
+    public ParkingSpotName Name { get; }
+    public Capacity Capacity { get; }
     public IEnumerable<Reservation> Reservations => _reservations;
 
     private readonly HashSet<Reservation> _reservations = new();

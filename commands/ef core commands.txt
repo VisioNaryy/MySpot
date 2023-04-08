@@ -1,0 +1,2 @@
+dotnet ef migrations add InitialCreate --startup-project ..\MySpot.Api --output-dir EF\Migrations
+dotnet ef database update --startup-project ..\MySpot.Api

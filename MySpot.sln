@@ -21,11 +21,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Domain.Data", "src\M
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Domain", "src\MySpot.Domain\MySpot.Domain.csproj", "{D611A355-2B99-455D-99E9-DB5CBF26F717}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Data", "src\MySpot.Data\MySpot.Data.csproj", "{34F7AFF5-CB55-498E-AC83-0F17AF465B5B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Infrastructure.Data", "src\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj", "{34F7AFF5-CB55-498E-AC83-0F17AF465B5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Services", "src\MySpot.Services\MySpot.Services.csproj", "{AD4C90A3-EA3B-46D0-A205-B872DDA6BA74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Application.Services", "src\MySpot.Application.Services\MySpot.Application.Services.csproj", "{AD4C90A3-EA3B-46D0-A205-B872DDA6BA74}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Logging", "src\MySpot.Logging\MySpot.Logging.csproj", "{95678B09-80A6-42A2-9292-5207B0530187}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Infrastructure.Logging", "src\MySpot.Infrastructure.Logging\MySpot.Infrastructure.Logging.csproj", "{95678B09-80A6-42A2-9292-5207B0530187}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Domain.Api", "src\MySpot.Domain.Api\MySpot.Domain.Api.csproj", "{125D7483-2C7F-4EE5-8D20-AE9AF3811660}"
 EndProject

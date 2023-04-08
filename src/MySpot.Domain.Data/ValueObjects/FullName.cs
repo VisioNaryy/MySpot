@@ -1,6 +1,6 @@
-﻿using MySpot.Comain.Data.Exceptions;
+﻿using MySpot.Domain.Data.Exceptions;
 
-namespace MySpot.Comain.Data.ValueObjects;
+namespace MySpot.Domain.Data.ValueObjects;
 
 public sealed record FullName
 {

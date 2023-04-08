@@ -1,11 +1,11 @@
-﻿using MySpot.Comain.Data.ValueObjects;
+﻿using MySpot.Domain.Data.ValueObjects;
 
-namespace MySpot.Comain.Data.Entities;
+namespace MySpot.Domain.Data.Entities;
 
 public class VehicleReservation : Reservation
 {
-    public UserId UserId { get; private set; }
-    public EmployeeName EmployeeName { get; private set; }
+    public UserId UserId { get; }
+    public EmployeeName EmployeeName { get; }
     public LicencePlate LicencePlate { get; private set; }
 
     private VehicleReservation()

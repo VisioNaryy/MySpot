@@ -1,6 +1,6 @@
-using MySpot.Comain.Data.ValueObjects;
+using MySpot.Domain.Data.ValueObjects;
 
-namespace MySpot.Comain.Data.Exceptions;
+namespace MySpot.Domain.Data.Exceptions;
 
 public sealed class ParkingSpotCapacityExceededException : CustomException
 {
