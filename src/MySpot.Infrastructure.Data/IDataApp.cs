@@ -1,5 +1,5 @@
 ﻿namespace MySpot.Data;
 
-public interface IData
+public interface IDataApp
 {
 }

@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MySpot.Application.HostedServices\MySpot.Application.HostedServices.csproj" />
     <ProjectReference Include="..\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj" />
     <ProjectReference Include="..\MySpot.Domain.Api\MySpot.Domain.Api.csproj" />
     <ProjectReference Include="..\MySpot.Domain.Data\MySpot.Domain.Data.csproj" />
