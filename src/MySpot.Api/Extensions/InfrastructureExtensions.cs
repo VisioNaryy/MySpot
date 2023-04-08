@@ -1,14 +1,9 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
-using MySpot.Application.HostedServices.UseCases.Data.Implementation;
 using MySpot.Data;
 using MySpot.Data.EF.Contexts;
 using MySpot.Data.EF.Repositories;
 using MySpot.Domain.Data.IOptions;
-using MySpot.Services;
-using MySpot.Services.UseCases;
-using MySpot.Services.UseCases.Domain.Implementation;
-using MySpot.Services.UseCases.Domain.Interfaces;
 
 namespace MySpot.Api.Extensions;
 
@@ -19,7 +14,7 @@ public static class InfrastructureExtensions
         AddSqlServer(services, configuration);
     }
 
-    public static void AddSqlServer(this IServiceCollection services, ConfigurationManager configuration)
+    private static void AddSqlServer(this IServiceCollection services, ConfigurationManager configuration)
     {
         // contexts
         var sqlServerOptions = configuration.GetOptions<SqlServerOptions>(SqlServerOptions.SectionName);

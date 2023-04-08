@@ -8,5 +8,6 @@ public static class DomainExtensions
     {
         // options
         services.Configure<SqlServerOptions>(configuration.GetRequiredSection(SqlServerOptions.SectionName));
+        services.Configure<AppOptions>(configuration.GetRequiredSection(AppOptions.SectionName));
     }
 }

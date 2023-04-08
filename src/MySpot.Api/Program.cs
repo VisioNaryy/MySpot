@@ -1,4 +1,7 @@
+using Microsoft.Extensions.Options;
+using Microsoft.Identity.Client;
 using MySpot.Api.Extensions;
+using MySpot.Domain.Data.IOptions;
 
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
