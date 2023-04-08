@@ -1,6 +1,6 @@
 ﻿namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class InvalidFullNameException : CustomException
+public sealed class InvalidFullNameException : BaseException
 {
     public string FullName { get; }
 

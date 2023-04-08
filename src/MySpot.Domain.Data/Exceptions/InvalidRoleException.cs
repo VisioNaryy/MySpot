@@ -1,6 +1,6 @@
 namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class InvalidRoleException : CustomException
+public sealed class InvalidRoleException : BaseException
 {
     public string Role { get; }
 

@@ -1,6 +1,6 @@
 namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class InvalidCapacityException : CustomException
+public sealed class InvalidCapacityException : BaseException
 {
     public int Capacity { get; }
 

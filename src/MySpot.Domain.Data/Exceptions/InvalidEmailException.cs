@@ -1,6 +1,6 @@
 namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class InvalidEmailException : CustomException
+public sealed class InvalidEmailException : BaseException
 {
     public string Email { get; }
 

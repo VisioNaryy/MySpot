@@ -2,9 +2,10 @@
 
 namespace MySpot.Api.Controllers;
 
-[Route("reservations")]
+[Route("[controller]/[action]")]
 public class ReservationsController : ControllerBase
 {
+    [HttpGet]
     public void Get()
     {
         

@@ -1,5 +1,6 @@
 ﻿using System.Reflection;
 using Microsoft.EntityFrameworkCore;
+using MySpot.Api.Middlewares;
 using MySpot.Data;
 using MySpot.Data.EF.Contexts;
 using MySpot.Data.EF.Repositories;
@@ -11,6 +12,8 @@ public static class InfrastructureExtensions
 {
     public static void AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
     {
+        services.AddSingleton<ExceptionMiddleware>();
+        
         AddSqlServer(services, configuration);
     }
 
@@ -25,5 +28,24 @@ public static class InfrastructureExtensions
             .AddClasses(c => c.AssignableTo(typeof(IRepository)))
             .AsImplementedInterfaces()
             .WithScopedLifetime());
+    }
+    
+    public static WebApplication UseInfrastructure(this WebApplication app)
+    {
+        app.UseMiddleware<ExceptionMiddleware>();
+        
+        app.UseSwagger();
+        app.UseSwaggerUI();
+        app.UseReDoc(reDoc =>
+        {
+            reDoc.RoutePrefix = "docs";
+            reDoc.SpecUrl("/swagger/v1/swagger.json");
+            reDoc.DocumentTitle = "MySpot API";
+        });
+        app.UseAuthentication();
+        app.UseAuthorization();
+        app.MapControllers();
+        
+        return app;
     }
 }

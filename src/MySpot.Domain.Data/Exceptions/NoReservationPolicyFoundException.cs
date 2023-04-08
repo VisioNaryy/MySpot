@@ -2,7 +2,7 @@ using MySpot.Domain.Data.ValueObjects;
 
 namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class NoReservationPolicyFoundException : CustomException
+public sealed class NoReservationPolicyFoundException : BaseException
 {
     public JobTitle JobTitle { get; }
 

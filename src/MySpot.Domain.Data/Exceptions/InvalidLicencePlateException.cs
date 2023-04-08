@@ -1,6 +1,6 @@
 namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class InvalidLicencePlateException : CustomException
+public sealed class InvalidLicencePlateException : BaseException
 {
     public string LicencePlate { get; }
 

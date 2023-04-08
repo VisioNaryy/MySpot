@@ -2,7 +2,7 @@ using MySpot.Domain.Data.ValueObjects;
 
 namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class CannotReserveParkingSpotException : CustomException
+public sealed class CannotReserveParkingSpotException : BaseException
 {
     public ParkingSpotId ParkingSpotId { get; }
 

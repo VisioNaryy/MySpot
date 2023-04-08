@@ -2,7 +2,7 @@ using MySpot.Domain.Data.ValueObjects;
 
 namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class ParkingSpotCapacityExceededException : CustomException
+public sealed class ParkingSpotCapacityExceededException : BaseException
 {
     public ParkingSpotId ParkingSpotId { get; }
 

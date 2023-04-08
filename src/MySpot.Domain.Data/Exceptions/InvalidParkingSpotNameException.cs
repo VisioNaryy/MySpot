@@ -1,6 +1,6 @@
 namespace MySpot.Domain.Data.Exceptions;
 
-public class InvalidParkingSpotNameException : CustomException
+public class InvalidParkingSpotNameException : BaseException
 {
     public InvalidParkingSpotNameException() : base("Parking spot name is invalid.")
     {

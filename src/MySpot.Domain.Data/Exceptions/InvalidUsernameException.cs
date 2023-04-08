@@ -1,6 +1,6 @@
 namespace MySpot.Domain.Data.Exceptions;
 
-public class InvalidUsernameException : CustomException
+public class InvalidUsernameException : BaseException
 {
     public string UserName { get; }
 

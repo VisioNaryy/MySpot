@@ -1,6 +1,6 @@
 namespace MySpot.Domain.Data.Exceptions;
 
-public sealed class InvalidEntityIdException : CustomException
+public sealed class InvalidEntityIdException : BaseException
 {
     public object Id { get; }
 
