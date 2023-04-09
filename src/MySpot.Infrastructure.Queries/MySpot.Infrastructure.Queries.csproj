@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net7.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\MySpot.Common.Infrastructure\MySpot.Common.Infrastructure.csproj" />
+      <ProjectReference Include="..\MySpot.Domain.Services\MySpot.Domain.Services.csproj" />
+      <ProjectReference Include="..\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj" />
+    </ItemGroup>
+
+</Project>

@@ -11,6 +11,7 @@
     <ProjectReference Include="..\MySpot.Application.Commands\MySpot.Application.Commands.csproj" />
     <ProjectReference Include="..\MySpot.Common.Api\MySpot.Common.Api.csproj" />
     <ProjectReference Include="..\MySpot.Infrastructure.Logging\MySpot.Infrastructure.Logging.csproj" />
+    <ProjectReference Include="..\MySpot.Infrastructure.Queries\MySpot.Infrastructure.Queries.csproj" />
   </ItemGroup>
 
 </Project>

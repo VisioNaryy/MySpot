@@ -2,9 +2,8 @@ using MySpot.Data.EF.Repositories.Spots.Interfaces;
 using MySpot.Domain.Data.ValueObjects;
 using MySpot.Domain.Services.UseCases.Reservation.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Models;
-using MySpot.Services.UseCases.Spot.Implementation;
 
-namespace MySpot.Services.UseCases.Spot.Handlers.Implementation;
+namespace MySpot.Services.UseCases.Spot.Handlers;
 
 public sealed class ReserveParkingSpotForCleaningHandler : ICommandHandler<ReserveParkingSpotForCleaning>
 {

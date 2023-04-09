@@ -6,9 +6,8 @@ using MySpot.Domain.Services.UseCases.Date.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Models;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Spot.Implementation;
 
-namespace MySpot.Services.UseCases.Spot.Handlers.Implementation;
+namespace MySpot.Services.UseCases.Spot.Handlers;
 
 public sealed class ReserveParkingSpotForVehicleHandler : ICommandHandler<ReserveParkingSpotForVehicle>
 {

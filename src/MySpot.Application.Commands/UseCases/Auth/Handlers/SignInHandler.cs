@@ -1,9 +1,8 @@
 using MySpot.Data.EF.Repositories.Users.Interfaces;
 using MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Auth.Implementation;
 
-namespace MySpot.Services.UseCases.Auth.Handlers.Implementation;
+namespace MySpot.Services.UseCases.Auth.Handlers;
 
 internal sealed class SignInHandler : ICommandHandler<SignIn>
 {

@@ -2,9 +2,8 @@ using MySpot.Data.EF.Repositories.Spots.Interfaces;
 using MySpot.Domain.Data.Entities;
 using MySpot.Domain.Data.ValueObjects;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Reservation.Implementation;
 
-namespace MySpot.Services.UseCases.Reservation.Handlers.Implementation;
+namespace MySpot.Services.UseCases.Reservation.Handlers;
 
 public sealed class ChangeReservationLicencePlateHandler : ICommandHandler<ChangeReservationLicencePlate>
 {

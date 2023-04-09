@@ -4,9 +4,8 @@ using MySpot.Domain.Data.ValueObjects;
 using MySpot.Domain.Services.UseCases.Date.Interfaces;
 using MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Auth.Implementation;
 
-namespace MySpot.Services.UseCases.Auth.Handlers.Implementation;
+namespace MySpot.Services.UseCases.Auth.Handlers;
 
 internal sealed class SignUpHandler : ICommandHandler<SignUp>
 {
