@@ -11,9 +11,8 @@
     </ItemGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MySpot.Application.Services\MySpot.Application.Services.csproj" />
-      <ProjectReference Include="..\MySpot.Domain.Data\MySpot.Domain.Data.csproj" />
-      <ProjectReference Include="..\MySpot.Domain\MySpot.Domain.csproj" />
+      <ProjectReference Include="..\MySpot.Common.Application\MySpot.Common.Application.csproj" />
+      <ProjectReference Include="..\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj" />
     </ItemGroup>
 
 </Project>

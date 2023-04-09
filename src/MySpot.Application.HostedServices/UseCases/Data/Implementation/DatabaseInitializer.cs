@@ -4,7 +4,7 @@ using Microsoft.Extensions.Hosting;
 using MySpot.Data.EF.Contexts;
 using MySpot.Domain.Data.Entities;
 using MySpot.Domain.Data.ValueObjects;
-using MySpot.Services.UseCases.Domain.Interfaces;
+using MySpot.Domain.Services.UseCases.Date.Interfaces;
 
 namespace MySpot.Application.HostedServices.UseCases.Data.Implementation;
 

@@ -8,16 +8,13 @@
     </PropertyGroup>
 
     <ItemGroup>
+      <ProjectReference Include="..\MySpot.Common.Application\MySpot.Common.Application.csproj" />
       <ProjectReference Include="..\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj" />
-      <ProjectReference Include="..\MySpot.Domain.Data\MySpot.Domain.Data.csproj" />
-      <ProjectReference Include="..\MySpot.Domain\MySpot.Domain.csproj" />
     </ItemGroup>
 
     <ItemGroup>
       <Folder Include="UseCases\Auth\Implementation" />
       <Folder Include="UseCases\Auth\Interfaces" />
-      <Folder Include="UseCases\Reservation\Implementation" />
-      <Folder Include="UseCases\Reservation\Interfaces" />
       <Folder Include="UseCases\Security\Implementation" />
       <Folder Include="UseCases\Security\Interfaces" />
       <Folder Include="UseCases\Time\Implementation" />

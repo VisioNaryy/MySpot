@@ -26,7 +26,7 @@ public class WeeklyParkingSpot
     public static WeeklyParkingSpot Create(ParkingSpotId id, Week week, ParkingSpotName name)
         => new(id, week, name, MaximumCapacity);
 
-    internal void AddReservation(Reservation reservation, Date now)
+    public void AddReservation(Reservation reservation, Date now)
     {
         var isInvalidDate = reservation.Date < Week.From ||
                             reservation.Date > Week.To ||

@@ -7,20 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\MySpot.Application.HostedServices\MySpot.Application.HostedServices.csproj" />
-    <ProjectReference Include="..\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj" />
-    <ProjectReference Include="..\MySpot.Domain.Api\MySpot.Domain.Api.csproj" />
-    <ProjectReference Include="..\MySpot.Domain.Data\MySpot.Domain.Data.csproj" />
-    <ProjectReference Include="..\MySpot.Domain\MySpot.Domain.csproj" />
-    <ProjectReference Include="..\MySpot.Infrastructure.Logging\MySpot.Infrastructure.Logging.csproj" />
     <ProjectReference Include="..\MySpot.Application.Services\MySpot.Application.Services.csproj" />
+    <ProjectReference Include="..\MySpot.Common.Api\MySpot.Common.Api.csproj" />
+    <ProjectReference Include="..\MySpot.Infrastructure.Logging\MySpot.Infrastructure.Logging.csproj" />
   </ItemGroup>
 
 </Project>

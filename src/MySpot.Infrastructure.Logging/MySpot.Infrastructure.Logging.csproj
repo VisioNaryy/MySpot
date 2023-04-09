@@ -8,7 +8,8 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <ProjectReference Include="..\MySpot.Domain\MySpot.Domain.csproj" />
+      <ProjectReference Include="..\MySpot.Common.Infrastructure\MySpot.Common.Infrastructure.csproj" />
+      <ProjectReference Include="..\MySpot.Domain.Services\MySpot.Domain.Services.csproj" />
     </ItemGroup>
 
 </Project>

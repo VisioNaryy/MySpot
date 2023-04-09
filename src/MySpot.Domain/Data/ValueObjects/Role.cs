@@ -1,10 +1,11 @@
+using MySpot.Domain.Data.Enums;
 using MySpot.Domain.Data.Exceptions;
 
 namespace MySpot.Domain.Data.ValueObjects;
 
 public sealed record Role
 {
-    public static IEnumerable<string> AvailableRoles { get; } = new[] {"admin", "user"};
+    public static IEnumerable<AvailableRole> AvailableRoles { get; } = new[] {AvailableRole.Admin, AvailableRole.User};
 
     public string Value { get; }
 
@@ -15,7 +16,12 @@ public sealed record Role
             throw new InvalidRoleException(value);
         }
 
-        if (!AvailableRoles.Contains(value))
+        if (Enum.TryParse(value, out AvailableRole role) is false)
+        {
+            throw new InvalidRoleException(value);
+        }
+
+        if (!AvailableRoles.Contains(role))
         {
             throw new InvalidRoleException(value);
         }
