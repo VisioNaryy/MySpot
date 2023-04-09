@@ -3,8 +3,6 @@ using MySpot.Domain.Data.IOptions;
 using MySpot.Domain.Services;
 using MySpot.Domain.Services.Policies.Interfaces;
 using MySpot.Domain.Services.UseCases;
-using MySpot.Domain.Services.UseCases.Date.Implementation;
-using MySpot.Domain.Services.UseCases.Date.Interfaces;
 
 namespace MySpot.Api.Extensions;
 
@@ -17,6 +15,7 @@ public static class DomainExtensions
         // options
         services.Configure<SqlServerOptions>(configuration.GetRequiredSection(SqlServerOptions.SectionName));
         services.Configure<AppOptions>(configuration.GetRequiredSection(AppOptions.SectionName));
+        services.Configure<AuthOptions>(configuration.GetRequiredSection(AuthOptions.SectionName));
         
         // policies
         services.Scan(s => s.FromAssemblies(domainServiceAppAssembly)

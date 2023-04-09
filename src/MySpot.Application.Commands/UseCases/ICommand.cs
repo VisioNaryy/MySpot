@@ -1,5 +1,5 @@
 ﻿namespace MySpot.Services.UseCases;
 
-public interface IService
+public interface ICommand
 {
 }

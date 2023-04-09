@@ -10,17 +10,17 @@ public static class ApplicationExtensions
 {
     public static void AddApplication(this IServiceCollection services, ConfigurationManager configuration)
     {
-        var serviceAppAssembly = Assembly.GetAssembly(typeof(IServiceApp))!;
+        var commandsAppAssembly = Assembly.GetAssembly(typeof(ICommandApp))!;
         
         // options
         services.Configure<SqlServerOptions>(configuration.GetRequiredSection(SqlServerOptions.SectionName));
 
-        // services
-        services.Scan(s => s.FromAssemblies(serviceAppAssembly)
-            .AddClasses(c => c.AssignableTo(typeof(IService)))
-            .AsSelf()
+        // command handlers
+        services.Scan(s => s.FromAssemblies(commandsAppAssembly)
+            .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>)))
+            .AsImplementedInterfaces()
             .WithScopedLifetime());
-        
+
         // hosted services
         services.AddHostedService<DatabaseInitializer>();
     }

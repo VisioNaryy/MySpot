@@ -1,5 +1,5 @@
 ﻿namespace MySpot.Services;
 
-public interface IServiceApp
+public interface ICommandApp
 {
 }

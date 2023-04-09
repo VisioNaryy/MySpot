@@ -21,7 +21,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Domain", "src\MySpot
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Infrastructure.Data", "src\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj", "{34F7AFF5-CB55-498E-AC83-0F17AF465B5B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Application.Services", "src\MySpot.Application.Services\MySpot.Application.Services.csproj", "{AD4C90A3-EA3B-46D0-A205-B872DDA6BA74}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Application.Commands", "src\MySpot.Application.Commands\MySpot.Application.Commands.csproj", "{AD4C90A3-EA3B-46D0-A205-B872DDA6BA74}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Infrastructure.Logging", "src\MySpot.Infrastructure.Logging\MySpot.Infrastructure.Logging.csproj", "{95678B09-80A6-42A2-9292-5207B0530187}"
 EndProject
@@ -38,6 +38,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Common.Infrastructure", "src\MySpot.Common.Infrastructure\MySpot.Common.Infrastructure.csproj", "{26F585C4-D078-49BF-9773-097333A7DB5B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Common.Application", "src\MySpot.Common.Application\MySpot.Common.Application.csproj", "{0C2C5D81-ECF3-4560-8647-F18629196CB5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MySpot.Infrastructure.Services", "src\MySpot.Infrastructure.Services\MySpot.Infrastructure.Services.csproj", "{7FD41667-2A40-46CE-A62A-87E34ACA9BA1}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -92,6 +94,10 @@ Global
 		{0C2C5D81-ECF3-4560-8647-F18629196CB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0C2C5D81-ECF3-4560-8647-F18629196CB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0C2C5D81-ECF3-4560-8647-F18629196CB5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FD41667-2A40-46CE-A62A-87E34ACA9BA1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FD41667-2A40-46CE-A62A-87E34ACA9BA1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FD41667-2A40-46CE-A62A-87E34ACA9BA1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FD41667-2A40-46CE-A62A-87E34ACA9BA1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{4459D66E-BEF9-430F-B39C-1F89BB7EE82B} = {22433DCA-2F0D-4BA9-8637-B660CFCD6A9D}
@@ -110,5 +116,6 @@ Global
 		{CA70AF4B-2555-4AC7-809C-750F5C4414BA} = {9863E67E-ACE8-41F4-BA3B-9DB0240D341E}
 		{26F585C4-D078-49BF-9773-097333A7DB5B} = {09236E99-1BB9-499F-9105-F43F6273F4DA}
 		{0C2C5D81-ECF3-4560-8647-F18629196CB5} = {09236E99-1BB9-499F-9105-F43F6273F4DA}
+		{7FD41667-2A40-46CE-A62A-87E34ACA9BA1} = {F017E454-26F1-4F03-B549-E82FDD7C5DDE}
 	EndGlobalSection
 EndGlobal

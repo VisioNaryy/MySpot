@@ -10,15 +10,7 @@
     <ItemGroup>
       <ProjectReference Include="..\MySpot.Common.Application\MySpot.Common.Application.csproj" />
       <ProjectReference Include="..\MySpot.Infrastructure.Data\MySpot.Infrastructure.Data.csproj" />
-    </ItemGroup>
-
-    <ItemGroup>
-      <Folder Include="UseCases\Auth\Implementation" />
-      <Folder Include="UseCases\Auth\Interfaces" />
-      <Folder Include="UseCases\Security\Implementation" />
-      <Folder Include="UseCases\Security\Interfaces" />
-      <Folder Include="UseCases\Time\Implementation" />
-      <Folder Include="UseCases\Time\Interfaces" />
+      <ProjectReference Include="..\MySpot.Infrastructure.Services\MySpot.Infrastructure.Services.csproj" />
     </ItemGroup>
 
 </Project>

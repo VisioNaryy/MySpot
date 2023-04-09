@@ -8,7 +8,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MySpot.Application.HostedServices\MySpot.Application.HostedServices.csproj" />
-    <ProjectReference Include="..\MySpot.Application.Services\MySpot.Application.Services.csproj" />
+    <ProjectReference Include="..\MySpot.Application.Commands\MySpot.Application.Commands.csproj" />
     <ProjectReference Include="..\MySpot.Common.Api\MySpot.Common.Api.csproj" />
     <ProjectReference Include="..\MySpot.Infrastructure.Logging\MySpot.Infrastructure.Logging.csproj" />
   </ItemGroup>
