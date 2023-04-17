@@ -1,9 +1,8 @@
 using MySpot.Data.EF.Repositories.Users.Interfaces;
 using MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Auth.Commands;
 
-namespace MySpot.Services.UseCases.Auth.Handlers;
+namespace MySpot.Services.UseCases.Auth.SignIn;
 
 internal sealed class SignInHandler : ICommandHandler<SignIn>
 {
@@ -26,13 +25,15 @@ internal sealed class SignInHandler : ICommandHandler<SignIn>
     
     public async Task HandleAsync(SignIn command)
     {
-        var user = await _userRepository.GetByEmailAsync(command.Email);
+        var (email, password) = command;
+        
+        var user = await _userRepository.GetByEmailAsync(email);
         if (user is null)
         {
             throw new InvalidCredentialsException();
         }
 
-        if (!_passwordManager.Validate(command.Password, user.Password))
+        if (!_passwordManager.Validate(password, user.Password))
         {
             throw new InvalidCredentialsException();
         }

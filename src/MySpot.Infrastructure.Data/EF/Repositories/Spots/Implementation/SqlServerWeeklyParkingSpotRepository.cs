@@ -28,7 +28,7 @@ public sealed class SqlServerWeeklyParkingSpotRepository : IWeeklyParkingSpotRep
             .Where(x => x.Week == week)
             .ToListAsync();
 
-    public async Task<WeeklyParkingSpot> GetAsync(ParkingSpotId id)
+    public async Task<WeeklyParkingSpot?> GetAsync(ParkingSpotId id)
         => await _weeklyParkingSpots
             .Include(x => x.Reservations)
             .SingleOrDefaultAsync(x => x.Id == id);

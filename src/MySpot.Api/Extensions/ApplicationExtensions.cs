@@ -13,19 +13,19 @@ public static class ApplicationExtensions
     {
         var commandsAppAssembly = Assembly.GetAssembly(typeof(ICommandApp))!;
         
-        // options
+        // Options
         services.Configure<SqlServerOptions>(configuration.GetRequiredSection(SqlServerOptions.SectionName));
 
-        // command handlers
+        // Command handlers
         services.Scan(s => s.FromAssemblies(commandsAppAssembly)
             .AddClasses(c => c.AssignableTo(typeof(ICommandHandler<>)))
             .AsImplementedInterfaces()
             .WithScopedLifetime());
 
-        // hosted services
+        // Hosted services
         services.AddHostedService<DatabaseInitializer>();
         
-        // decorators
+        // Decorators
         services.TryDecorate(typeof(ICommandHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
         services.TryDecorate(typeof(ICommandHandler<>), typeof(LoggingCommandHandlerDecorator<>));
     }

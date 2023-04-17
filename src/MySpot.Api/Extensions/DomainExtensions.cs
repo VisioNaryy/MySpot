@@ -12,18 +12,18 @@ public static class DomainExtensions
     {
         var domainServiceAppAssembly = Assembly.GetAssembly(typeof(IDomainServiceApp))!;
         
-        // options
+        // Options
         services.Configure<SqlServerOptions>(configuration.GetRequiredSection(SqlServerOptions.SectionName));
         services.Configure<AppOptions>(configuration.GetRequiredSection(AppOptions.SectionName));
         services.Configure<AuthOptions>(configuration.GetRequiredSection(AuthOptions.SectionName));
         
-        // policies
+        // Policies
         services.Scan(s => s.FromAssemblies(domainServiceAppAssembly)
             .AddClasses(c => c.AssignableTo(typeof(IReservationPolicy)))
             .AsSelf()
             .WithSingletonLifetime());
         
-        // services
+        // Services
         services.Scan(s => s.FromAssemblies(domainServiceAppAssembly)
             .AddClasses(c => c.AssignableTo(typeof(IDomainService)))
             .AsImplementedInterfaces()

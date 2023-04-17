@@ -17,7 +17,6 @@ using MySpot.Infrastructure.Queries;
 using MySpot.Infrastructure.Queries.UseCases;
 using MySpot.Infrastructure.Services;
 using MySpot.Infrastructure.Services.UseCases;
-using MySpot.Services.UseCases;
 
 namespace MySpot.Api.Extensions;
 
@@ -31,17 +30,17 @@ public static class InfrastructureExtensions
         AddSqlServer(services, configuration);
         AddAuth(services, configuration);
         
-        // middleware
+        // Middleware
         services.AddSingleton<ExceptionMiddleware>();
         services.AddHttpContextAccessor();
 
-        // services
+        // Services
         services.Scan(s => s.FromAssemblies(infrastrucureServicesAssembly)
             .AddClasses(c => c.AssignableTo(typeof(IService)))
             .AsImplementedInterfaces()
             .WithSingletonLifetime());
 
-        // query handlers
+        // Query handlers
         services.Scan(s => s.FromAssemblies(infrastructureQueriesAssembly)
             .AddClasses(c => c.AssignableTo(typeof(IQueryHandler<,>)))
             .AsImplementedInterfaces()
@@ -61,11 +60,11 @@ public static class InfrastructureExtensions
 
     private static void AddSqlServer(this IServiceCollection services, ConfigurationManager configuration)
     {
-        // contexts
+        // Contexts
         var sqlServerOptions = configuration.GetOptions<SqlServerOptions>(SqlServerOptions.SectionName);
         services.AddDbContext<MySpotDbContext>(x => x.UseSqlServer(sqlServerOptions.ConnectionString));
 
-        // repositories
+        // Repositories
         services.Scan(s => s.FromAssemblies(Assembly.GetAssembly(typeof(IInfrastructureDataApp))!)
             .AddClasses(c => c.AssignableTo(typeof(IRepository)))
             .AsImplementedInterfaces()
@@ -107,7 +106,7 @@ public static class InfrastructureExtensions
         });
     }
     
-    public static WebApplication UseInfrastructure(this WebApplication app)
+    public static void UseInfrastructure(this WebApplication app)
     {
         app.UseMiddleware<ExceptionMiddleware>();
         
@@ -122,7 +121,5 @@ public static class InfrastructureExtensions
         app.UseAuthentication();
         app.UseAuthorization();
         app.MapControllers();
-        
-        return app;
     }
 }

@@ -4,9 +4,8 @@ using MySpot.Domain.Data.ValueObjects;
 using MySpot.Domain.Services.UseCases.Date.Interfaces;
 using MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Auth.Commands;
 
-namespace MySpot.Services.UseCases.Auth.Handlers;
+namespace MySpot.Services.UseCases.Auth.SignUp;
 
 internal sealed class SignUpHandler : ICommandHandler<SignUp>
 {
@@ -26,12 +25,14 @@ internal sealed class SignUpHandler : ICommandHandler<SignUp>
 
     public async Task HandleAsync(SignUp command)
     {
-        var userId = new UserId(command.UserId);
-        var email = new Email(command.Email);
-        var username = new Username(command.Username);
-        var password = new Password(command.Password);
-        var fullName = new FullName(command.FullName);
-        var role = string.IsNullOrWhiteSpace(command.Role) ? Role.User() : new Role(command.Role);
+        var (guid, s, username1, password1, fullName1, role1) = command;
+        
+        var userId = new UserId(guid);
+        var email = new Email(s);
+        var username = new Username(username1);
+        var password = new Password(password1);
+        var fullName = new FullName(fullName1);
+        var role = string.IsNullOrWhiteSpace(role1) ? Role.User() : new Role(role1);
         
         if (await _userRepository.GetByEmailAsync(email) is not null)
         {

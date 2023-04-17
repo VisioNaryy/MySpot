@@ -1,12 +1,9 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using MySpot.Domain.Data.Models;
-using MySpot.Domain.Services.UseCases.Reservation.Models;
 using MySpot.Infrastructure.Queries.UseCases;
-using MySpot.Infrastructure.Queries.UseCases.Spot;
-using MySpot.Infrastructure.Queries.UseCases.Spot.Queries;
+using MySpot.Infrastructure.Queries.UseCases.Spot.Get;
 using MySpot.Services.UseCases;
-using MySpot.Services.UseCases.Spot;
-using MySpot.Services.UseCases.Spot.Commands;
+using MySpot.Services.UseCases.ParkingSpot.Vehicle;
 
 namespace MySpot.Api.Controllers;
 

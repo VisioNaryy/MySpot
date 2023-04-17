@@ -2,9 +2,8 @@ using MySpot.Data.EF.Repositories.Spots.Interfaces;
 using MySpot.Domain.Data.ValueObjects;
 using MySpot.Domain.Services.UseCases.Reservation.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Models;
-using MySpot.Services.UseCases.Spot.Commands;
 
-namespace MySpot.Services.UseCases.Spot.Handlers;
+namespace MySpot.Services.UseCases.ParkingSpot.Cleaning;
 
 public sealed class ReserveParkingSpotForCleaningHandler : ICommandHandler<ReserveParkingSpotForCleaning>
 {
@@ -21,12 +20,13 @@ public sealed class ReserveParkingSpotForCleaningHandler : ICommandHandler<Reser
     
     public async Task HandleAsync(ReserveParkingSpotForCleaning command)
     {
-        var week = new Week(command.Date);
+        var dateTimeOffset = command.Date;
+        var week = new Week(dateTimeOffset);
         var weeklyParkingSpots = (await _repository.GetByWeekAsync(week)).ToList();
 
         var request = new ReserveParkingForCleaningRequest(
             AllParkingSpots: weeklyParkingSpots, 
-            Date: new Date(command.Date));
+            Date: new Date(dateTimeOffset));
 
         _reservationService.ReserveParkingForCleaning(request);
 

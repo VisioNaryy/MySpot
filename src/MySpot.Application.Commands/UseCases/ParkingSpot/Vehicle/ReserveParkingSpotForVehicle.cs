@@ -1,4 +1,4 @@
-namespace MySpot.Services.UseCases.Spot.Commands;
+namespace MySpot.Services.UseCases.ParkingSpot.Vehicle;
 
 public sealed record ReserveParkingSpotForVehicle(
     Guid ParkingSpotId, 

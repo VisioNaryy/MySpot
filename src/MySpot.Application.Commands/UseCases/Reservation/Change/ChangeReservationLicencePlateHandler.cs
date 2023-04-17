@@ -2,9 +2,8 @@ using MySpot.Data.EF.Repositories.Spots.Interfaces;
 using MySpot.Domain.Data.Entities;
 using MySpot.Domain.Data.ValueObjects;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Reservation.Commands;
 
-namespace MySpot.Services.UseCases.Reservation.Handlers;
+namespace MySpot.Services.UseCases.Reservation.Change;
 
 public sealed class ChangeReservationLicencePlateHandler : ICommandHandler<ChangeReservationLicencePlate>
 {
@@ -15,23 +14,25 @@ public sealed class ChangeReservationLicencePlateHandler : ICommandHandler<Chang
 
     public async Task HandleAsync(ChangeReservationLicencePlate command)
     {
-        var weeklyParkingSpot = await GetWeeklyParkingSpotByReservation(command.ReservationId);
+        var (guid, licencePlate) = command;
+        
+        var weeklyParkingSpot = await GetWeeklyParkingSpotByReservation(guid);
         if (weeklyParkingSpot is null)
         {
             throw new WeeklyParkingSpotNotFoundException();
         }
 
-        var reservationId = new ReservationId(command.ReservationId);
+        var reservationId = new ReservationId(guid);
         var reservation = weeklyParkingSpot.Reservations
             .OfType<VehicleReservation>()
             .SingleOrDefault(x => x.Id == reservationId);
 
         if (reservation is null)
         {
-            throw new ReservationNotFoundException(command.ReservationId);
+            throw new ReservationNotFoundException(guid);
         }
     
-        reservation.ChangeLicencePlate(command.LicencePlate);
+        reservation.ChangeLicencePlate(licencePlate);
         await _repository.UpdateAsync(weeklyParkingSpot);
     }
     

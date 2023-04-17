@@ -3,9 +3,8 @@ using MySpot.Data.EF.Contexts;
 using MySpot.Data.Extensions;
 using MySpot.Domain.Data.Models;
 using MySpot.Domain.Data.ValueObjects;
-using MySpot.Infrastructure.Queries.UseCases.Spot.Queries;
 
-namespace MySpot.Infrastructure.Queries.UseCases.Spot.Handlers;
+namespace MySpot.Infrastructure.Queries.UseCases.Spot.Get;
 
 internal sealed class GetWeeklyParkingSpotsHandler : IQueryHandler<GetWeeklyParkingSpots, IEnumerable<WeeklyParkingSpotDto>>
 {

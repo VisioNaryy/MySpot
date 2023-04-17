@@ -6,9 +6,8 @@ using MySpot.Domain.Services.UseCases.Date.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Models;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Spot.Commands;
 
-namespace MySpot.Services.UseCases.Spot.Handlers;
+namespace MySpot.Services.UseCases.ParkingSpot.Vehicle;
 
 public sealed class ReserveParkingSpotForVehicleHandler : ICommandHandler<ReserveParkingSpotForVehicle>
 {
@@ -32,6 +31,7 @@ public sealed class ReserveParkingSpotForVehicleHandler : ICommandHandler<Reserv
     public async Task HandleAsync(ReserveParkingSpotForVehicle command)
     {
         var (spotId, reservationId, userId, licencePlate, capacity, date) = command;
+        
         var week = new Week(_clock.Current());
         var parkingSpotId = new ParkingSpotId(spotId);
         var weeklyParkingSpots = (await _repository.GetByWeekAsync(week)).ToList();

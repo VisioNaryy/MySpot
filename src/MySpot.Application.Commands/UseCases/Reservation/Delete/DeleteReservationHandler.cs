@@ -2,9 +2,8 @@ using MySpot.Data.EF.Repositories.Spots.Interfaces;
 using MySpot.Domain.Data.Entities;
 using MySpot.Domain.Data.ValueObjects;
 using MySpot.Services.Exceptions;
-using MySpot.Services.UseCases.Reservation.Commands;
 
-namespace MySpot.Services.UseCases.Reservation.Handlers;
+namespace MySpot.Services.UseCases.Reservation.Delete;
 
 public sealed class DeleteReservationHandler : ICommandHandler<DeleteReservation>
 {
@@ -25,7 +24,7 @@ public sealed class DeleteReservationHandler : ICommandHandler<DeleteReservation
         await _repository.UpdateAsync(weeklyParkingSpot);
     }
     
-    private async Task<WeeklyParkingSpot> GetWeeklyParkingSpotByReservation(ReservationId id)
+    private async Task<WeeklyParkingSpot?> GetWeeklyParkingSpotByReservation(ReservationId id)
         => (await _repository.GetAllAsync())
             .SingleOrDefault(x => x.Reservations.Any(r => r.Id == id));
 }

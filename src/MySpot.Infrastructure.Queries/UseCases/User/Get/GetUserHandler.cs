@@ -3,9 +3,8 @@ using MySpot.Data.EF.Contexts;
 using MySpot.Data.Extensions;
 using MySpot.Domain.Data.Models;
 using MySpot.Domain.Data.ValueObjects;
-using MySpot.Infrastructure.Queries.UseCases.User.Queries;
 
-namespace MySpot.Infrastructure.Queries.UseCases.User.Handlers;
+namespace MySpot.Infrastructure.Queries.UseCases.User.Get;
 
 internal sealed class GetUserHandler : IQueryHandler<GetUser, UserDto>
 {
