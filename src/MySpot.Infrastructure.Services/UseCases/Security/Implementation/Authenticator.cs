@@ -25,9 +25,9 @@ internal sealed class Authenticator : IAuthenticator
         _issuer = options.Value.Issuer;
         _audience = options.Value.Audience;
         _expiry = options.Value.Expiry ?? TimeSpan.FromHours(1);
-        _signingCredentials = new SigningCredentials(new SymmetricSecurityKey(
-                Encoding.UTF8.GetBytes(options.Value.SigningKey)),
-            SecurityAlgorithms.HmacSha256);
+        _signingCredentials = new SigningCredentials(
+            new SymmetricSecurityKey(Encoding.UTF8.GetBytes(options.Value.SigningKey)),
+            SecurityAlgorithms.HmacSha512);
     }
 
     public JwtToken CreateToken(Guid userId, string role)
