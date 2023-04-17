@@ -2,6 +2,7 @@
 using MySpot.Application.HostedServices.UseCases.Data.Implementation;
 using MySpot.Domain.Data.IOptions;
 using MySpot.Services;
+using MySpot.Services.Decorators;
 using MySpot.Services.UseCases;
 
 namespace MySpot.Api.Extensions;
@@ -23,5 +24,9 @@ public static class ApplicationExtensions
 
         // hosted services
         services.AddHostedService<DatabaseInitializer>();
+        
+        // decorators
+        services.TryDecorate(typeof(ICommandHandler<>), typeof(UnitOfWorkCommandHandlerDecorator<>));
+        services.TryDecorate(typeof(ICommandHandler<>), typeof(LoggingCommandHandlerDecorator<>));
     }
 }

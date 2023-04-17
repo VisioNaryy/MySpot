@@ -2,6 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using MySpot.Data.EF.Contexts;
 using MySpot.Data.Extensions;
 using MySpot.Domain.Data.Models;
+using MySpot.Infrastructure.Queries.UseCases.User.Queries;
 
 namespace MySpot.Infrastructure.Queries.UseCases.User.Handlers;
 

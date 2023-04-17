@@ -9,6 +9,8 @@ using MySpot.Api.Middlewares;
 using MySpot.Data;
 using MySpot.Data.EF.Contexts;
 using MySpot.Data.EF.Repositories;
+using MySpot.Data.EF.UnitOfWork.Implementation;
+using MySpot.Data.EF.UnitOfWork.Interfaces;
 using MySpot.Domain.Data.Entities;
 using MySpot.Domain.Data.IOptions;
 using MySpot.Infrastructure.Queries;
@@ -68,6 +70,9 @@ public static class InfrastructureExtensions
             .AddClasses(c => c.AssignableTo(typeof(IRepository)))
             .AsImplementedInterfaces()
             .WithScopedLifetime());
+        
+        // Unit of work
+        services.AddScoped<IUnitOfWork, SqlServerUnitOfWork>();
     }
 
     private static void AddAuth(this IServiceCollection services, ConfigurationManager configuration)

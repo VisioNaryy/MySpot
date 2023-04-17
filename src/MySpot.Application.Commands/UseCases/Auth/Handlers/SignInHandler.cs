@@ -1,6 +1,7 @@
 using MySpot.Data.EF.Repositories.Users.Interfaces;
 using MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 using MySpot.Services.Exceptions;
+using MySpot.Services.UseCases.Auth.Commands;
 
 namespace MySpot.Services.UseCases.Auth.Handlers;
 
@@ -11,7 +12,10 @@ internal sealed class SignInHandler : ICommandHandler<SignIn>
     private readonly IPasswordManager _passwordManager;
     private readonly ITokenStorage _tokenStorage;
 
-    public SignInHandler(IUserRepository userRepository, IAuthenticator authenticator, IPasswordManager passwordManager,
+    public SignInHandler(
+        IUserRepository userRepository, 
+        IAuthenticator authenticator, 
+        IPasswordManager passwordManager,
         ITokenStorage tokenStorage)
     {
         _userRepository = userRepository;

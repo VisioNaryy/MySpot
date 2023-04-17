@@ -1,4 +1,0 @@
-@url = http://localhost:5110
-
-### 
-GET {{url}}/reservations

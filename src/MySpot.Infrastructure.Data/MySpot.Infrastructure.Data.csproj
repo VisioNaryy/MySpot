@@ -8,11 +8,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="EF\Repositories\Users\Models" />
-      <Folder Include="EF\Repositories\Spots\Models" />
-    </ItemGroup>
-
-    <ItemGroup>
       <ProjectReference Include="..\MySpot.Common.Infrastructure\MySpot.Common.Infrastructure.csproj" />
       <ProjectReference Include="..\MySpot.Domain.Services\MySpot.Domain.Services.csproj" />
     </ItemGroup>

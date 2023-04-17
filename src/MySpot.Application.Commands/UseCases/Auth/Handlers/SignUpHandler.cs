@@ -4,6 +4,7 @@ using MySpot.Domain.Data.ValueObjects;
 using MySpot.Domain.Services.UseCases.Date.Interfaces;
 using MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 using MySpot.Services.Exceptions;
+using MySpot.Services.UseCases.Auth.Commands;
 
 namespace MySpot.Services.UseCases.Auth.Handlers;
 
@@ -13,7 +14,10 @@ internal sealed class SignUpHandler : ICommandHandler<SignUp>
     private readonly IPasswordManager _passwordManager;
     private readonly IClock _clock;
 
-    public SignUpHandler(IUserRepository userRepository, IPasswordManager passwordManager, IClock clock)
+    public SignUpHandler(
+        IUserRepository userRepository, 
+        IPasswordManager passwordManager,
+        IClock clock)
     {
         _userRepository = userRepository;
         _passwordManager = passwordManager;

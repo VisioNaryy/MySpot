@@ -1,6 +1,6 @@
 using MySpot.Domain.Data.Models;
 
-namespace MySpot.Infrastructure.Queries.UseCases.Spot;
+namespace MySpot.Infrastructure.Queries.UseCases.Spot.Queries;
 
 public class GetWeeklyParkingSpots : IQuery<IEnumerable<WeeklyParkingSpotDto>>
 {

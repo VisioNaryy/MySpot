@@ -6,6 +6,7 @@ using MySpot.Domain.Services.UseCases.Date.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Models;
 using MySpot.Services.Exceptions;
+using MySpot.Services.UseCases.Spot.Commands;
 
 namespace MySpot.Services.UseCases.Spot.Handlers;
 
@@ -16,8 +17,11 @@ public sealed class ReserveParkingSpotForVehicleHandler : ICommandHandler<Reserv
     private readonly IUserRepository _userRepository;
     private readonly IClock _clock;
 
-    public ReserveParkingSpotForVehicleHandler(IWeeklyParkingSpotRepository repository, 
-        IParkingReservationService reservationService, IUserRepository userRepository, IClock clock)
+    public ReserveParkingSpotForVehicleHandler(
+        IWeeklyParkingSpotRepository repository, 
+        IParkingReservationService reservationService, 
+        IUserRepository userRepository,
+        IClock clock)
     {
         _repository = repository;
         _reservationService = reservationService;

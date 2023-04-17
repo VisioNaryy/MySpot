@@ -2,6 +2,7 @@ using MySpot.Data.EF.Repositories.Spots.Interfaces;
 using MySpot.Domain.Data.ValueObjects;
 using MySpot.Domain.Services.UseCases.Reservation.Interfaces;
 using MySpot.Domain.Services.UseCases.Reservation.Models;
+using MySpot.Services.UseCases.Spot.Commands;
 
 namespace MySpot.Services.UseCases.Spot.Handlers;
 
@@ -10,7 +11,8 @@ public sealed class ReserveParkingSpotForCleaningHandler : ICommandHandler<Reser
     private readonly IWeeklyParkingSpotRepository _repository;
     private readonly IParkingReservationService _reservationService;
 
-    public ReserveParkingSpotForCleaningHandler(IWeeklyParkingSpotRepository repository, 
+    public ReserveParkingSpotForCleaningHandler(
+        IWeeklyParkingSpotRepository repository, 
         IParkingReservationService reservationService)
     {
         _repository = repository;
