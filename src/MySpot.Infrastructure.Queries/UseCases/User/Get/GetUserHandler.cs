@@ -13,7 +13,7 @@ internal sealed class GetUserHandler : IQueryHandler<GetUser, UserDto>
     public GetUserHandler(MySpotDbContext dbContext)
         => _dbContext = dbContext;
     
-    public async Task<UserDto?> HandleAsync(GetUser query)
+    public async Task<UserDto> HandleAsync(GetUser query)
     {
         var userId = new UserId(query.UserId);
         var user = await _dbContext.Users

@@ -4,6 +4,7 @@ using MySpot.Logging.Extensions;
 var builder = WebApplication.CreateBuilder(args);
 var services = builder.Services;
 var configuration = builder.Configuration;
+var environment = builder.Environment;
 
 builder.UseSerilog();
 
@@ -12,7 +13,7 @@ services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
 services.AddApplication(configuration);
-services.AddInfrastructure(configuration);
+services.AddInfrastructure(configuration, environment);
 services.AddDomain(configuration);
 
 var app = builder.Build();

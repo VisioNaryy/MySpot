@@ -5,5 +5,5 @@ namespace MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 public interface ITokenStorage : IService
 {
     void Set(JwtToken jwt);
-    JwtToken Get();
+    JwtToken? Get();
 }

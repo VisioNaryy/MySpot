@@ -44,7 +44,7 @@ internal sealed class Authenticator : IAuthenticator
         var jwt = new JwtSecurityToken(_issuer, _audience, claims, now, expires, _signingCredentials);
         var token = _jwtSecurityToken.WriteToken(jwt);
 
-        return new JwtToken
+        return new()
         {
             AccessToken = token
         };

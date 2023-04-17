@@ -33,9 +33,9 @@ public sealed record Role
 
     public static Role User() => new("user");
 
-    public static implicit operator Role(string value) => new Role(value);
+    public static implicit operator Role(string value) => new (value);
 
-    public static implicit operator string(Role value) => value?.Value;
+    public static implicit operator string(Role value) => value.Value;
 
     public override string ToString() => Value;
 }

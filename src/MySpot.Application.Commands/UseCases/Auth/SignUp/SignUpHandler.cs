@@ -25,14 +25,12 @@ internal sealed class SignUpHandler : ICommandHandler<SignUp>
 
     public async Task HandleAsync(SignUp command)
     {
-        var (guid, s, username1, password1, fullName1, role1) = command;
-        
-        var userId = new UserId(guid);
-        var email = new Email(s);
-        var username = new Username(username1);
-        var password = new Password(password1);
-        var fullName = new FullName(fullName1);
-        var role = string.IsNullOrWhiteSpace(role1) ? Role.User() : new Role(role1);
+        var userId = new UserId(command.UserId);
+        var email = new Email(command.Email);
+        var username = new Username(command.Username);
+        var password = new Password(command.Password);
+        var fullName = new FullName(command.FullName);
+        var userRole = string.IsNullOrWhiteSpace(command.Role) ? Role.User() : new Role(command.Role);
         
         if (await _userRepository.GetByEmailAsync(email) is not null)
         {
@@ -45,7 +43,7 @@ internal sealed class SignUpHandler : ICommandHandler<SignUp>
         }
 
         var securedPassword = _passwordManager.Secure(password);
-        var user = new User(userId, email, username, securedPassword, fullName, role, _clock.Current());
+        var user = new User(userId, email, username, securedPassword, fullName, userRole, _clock.Current());
         await _userRepository.AddAsync(user);
     }
 }

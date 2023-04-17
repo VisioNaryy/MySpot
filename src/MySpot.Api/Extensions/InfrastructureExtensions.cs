@@ -22,13 +22,13 @@ namespace MySpot.Api.Extensions;
 
 public static class InfrastructureExtensions
 {
-    public static void AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration)
+    public static void AddInfrastructure(this IServiceCollection services, ConfigurationManager configuration, IWebHostEnvironment environment)
     {
         var infrastructureQueriesAssembly = Assembly.GetAssembly(typeof(IInfrastructureQueriesApp))!;
         var infrastrucureServicesAssembly =  Assembly.GetAssembly(typeof(IInfrastructureServicesApp))!;
         
         AddSqlServer(services, configuration);
-        AddAuth(services, configuration);
+        AddAuth(services, configuration, environment);
         
         // Middleware
         services.AddSingleton<ExceptionMiddleware>();
@@ -74,7 +74,7 @@ public static class InfrastructureExtensions
         services.AddScoped<IUnitOfWork, SqlServerUnitOfWork>();
     }
 
-    private static void AddAuth(this IServiceCollection services, ConfigurationManager configuration)
+    private static void AddAuth(this IServiceCollection services, ConfigurationManager configuration, IWebHostEnvironment environment)
     {
         var options = configuration.GetOptions<AuthOptions>(AuthOptions.SectionName);
         
@@ -87,7 +87,7 @@ public static class InfrastructureExtensions
             .AddJwtBearer(o =>
             {
                 o.Audience = options.Audience;
-                o.IncludeErrorDetails = true;
+                o.IncludeErrorDetails = environment.IsDevelopment();
                 o.TokenValidationParameters = new TokenValidationParameters
                 {
                     ValidIssuer = options.Issuer,
@@ -109,6 +109,9 @@ public static class InfrastructureExtensions
     public static void UseInfrastructure(this WebApplication app)
     {
         app.UseMiddleware<ExceptionMiddleware>();
+
+        app.UseAuthentication();
+        app.UseAuthorization();
         
         app.UseSwagger();
         app.UseSwaggerUI();
@@ -118,8 +121,7 @@ public static class InfrastructureExtensions
             reDoc.SpecUrl("/swagger/v1/swagger.json");
             reDoc.DocumentTitle = "MySpot API";
         });
-        app.UseAuthentication();
-        app.UseAuthorization();
+        
         app.MapControllers();
     }
 }
