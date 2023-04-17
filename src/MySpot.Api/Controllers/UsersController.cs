@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MySpot.Domain.Data.Models;
 using MySpot.Infrastructure.Queries.UseCases;
 using MySpot.Infrastructure.Queries.UseCases.User.Get;
+using MySpot.Infrastructure.Queries.UseCases.Users.Get;
 using MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 using MySpot.Infrastructure.Services.UseCases.Security.Models;
 using MySpot.Services.UseCases;
@@ -18,17 +19,20 @@ public class UsersController : ControllerBase
     private readonly ICommandHandler<SignUp> _signUpCommandHandler;
     private readonly ICommandHandler<SignIn> _signInCommandHandler;
     private readonly IQueryHandler<GetUser, UserDto> _getUserQuery;
+    private readonly IQueryHandler<GetUsers, IEnumerable<UserDto>> _getUsersQuery;
     private readonly ITokenStorage _tokenStorage;
 
     public UsersController(
         ICommandHandler<SignUp> signUpCommandHandler,
         ICommandHandler<SignIn> signInCommandHandler,
         IQueryHandler<GetUser, UserDto> getUserQuery,
+        IQueryHandler<GetUsers, IEnumerable<UserDto>> getUsersQuery,
         ITokenStorage tokenStorage)
     {
         _signUpCommandHandler = signUpCommandHandler;
         _signInCommandHandler = signInCommandHandler;
         _getUserQuery = getUserQuery;
+        _getUsersQuery = getUsersQuery;
         _tokenStorage = tokenStorage;
     }
 
@@ -50,7 +54,7 @@ public class UsersController : ControllerBase
         return jwt;
     }
 
-    [Authorize]
+    [Authorize(Policy = "is-admin")]
     [HttpGet("me")]
     public async Task<IActionResult> Get()
     {
@@ -59,6 +63,24 @@ public class UsersController : ControllerBase
 
         var userId = Guid.Parse(User.Identity?.Name);
 
+        var user = await _getUserQuery.HandleAsync(new GetUser {UserId = userId});
+
+        return Ok(user);
+    }
+
+    [Authorize(Policy = "is-admin")]
+    [HttpGet]
+    public async Task<IActionResult> GetAll()
+    {
+        var users = await _getUsersQuery.HandleAsync(new GetUsers());
+
+        return Ok(users);
+    }
+    
+    [Authorize]
+    [HttpGet("{userId:guid}")]
+    public async Task<IActionResult> Get(Guid userId)
+    {
         var user = await _getUserQuery.HandleAsync(new GetUser {UserId = userId});
 
         return Ok(user);

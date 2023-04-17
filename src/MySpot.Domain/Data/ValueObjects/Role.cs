@@ -16,7 +16,7 @@ public sealed record Role
             throw new InvalidRoleException(value);
         }
 
-        if (Enum.TryParse(value, out AvailableRole role) is false)
+        if (Enum.TryParse(value, ignoreCase: true, out AvailableRole role) is false)
         {
             throw new InvalidRoleException(value);
         }
