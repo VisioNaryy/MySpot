@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using MySpot.Domain.Data.Models;
 using MySpot.Infrastructure.Queries.UseCases;
 using MySpot.Infrastructure.Queries.UseCases.User.Get;
 using MySpot.Infrastructure.Queries.UseCases.Users.Get;
@@ -9,6 +8,8 @@ using MySpot.Infrastructure.Services.UseCases.Security.Models;
 using MySpot.Services.UseCases;
 using MySpot.Services.UseCases.Auth.SignIn;
 using MySpot.Services.UseCases.Auth.SignUp;
+using Swashbuckle.AspNetCore.Annotations;
+using UserDto = MySpot.Domain.Data.Models.UserDto;
 
 namespace MySpot.Api.Controllers;
 
@@ -37,15 +38,23 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> SignUp(SignUp command)
+    [SwaggerOperation("Sign up a new user")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<ActionResult> SignUpAsync(SignUp command)
     {
-        await _signUpCommandHandler.HandleAsync(command with {UserId = Guid.NewGuid()});
+        command = command with {UserId = Guid.NewGuid()};
+        
+        await _signUpCommandHandler.HandleAsync(command);
 
-        return Ok();
+        return CreatedAtAction(nameof(GetAsync), new {command.UserId}, null);
     }
 
     [HttpPost]
-    public async Task<JwtToken?> SignIn(SignIn command)
+    [SwaggerOperation("Sign in the existing user")]
+    [ProducesResponseType(StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<JwtToken?> SignInAsync(SignIn command)
     {
         await _signInCommandHandler.HandleAsync(command);
 
@@ -53,10 +62,14 @@ public class UsersController : ControllerBase
 
         return jwt;
     }
-
+    
+    [HttpGet("current")]
+    [SwaggerOperation("Get full information about current user")]
     [Authorize(Policy = "is-admin")]
-    [HttpGet("me")]
-    public async Task<IActionResult> Get()
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<ActionResult> GetInfoAsync()
     {
         if (string.IsNullOrWhiteSpace(User.Identity?.Name))
             return NotFound();
@@ -68,21 +81,32 @@ public class UsersController : ControllerBase
         return Ok(user);
     }
 
-    [Authorize(Policy = "is-admin")]
+
     [HttpGet]
-    public async Task<IActionResult> GetAll()
+    [SwaggerOperation("Get list of all users")]
+    [Authorize(Policy = "is-admin")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status403Forbidden)]
+    public async Task<ActionResult> GetAllAsync([FromQuery] GetUsers query)
     {
-        var users = await _getUsersQuery.HandleAsync(new GetUsers());
+        var users = await _getUsersQuery.HandleAsync(query);
 
         return Ok(users);
     }
     
-    [Authorize]
     [HttpGet("{userId:guid}")]
-    public async Task<IActionResult> Get(Guid userId)
+    [SwaggerOperation("Get individual user")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<UserDto>> GetAsync(Guid userId)
     {
         var user = await _getUserQuery.HandleAsync(new GetUser {UserId = userId});
 
-        return Ok(user);
+        if (user is null)
+            return NotFound();
+
+        return user;
     }
 }
