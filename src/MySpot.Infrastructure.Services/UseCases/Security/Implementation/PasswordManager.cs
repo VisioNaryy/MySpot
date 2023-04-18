@@ -4,7 +4,7 @@ using MySpot.Infrastructure.Services.UseCases.Security.Interfaces;
 
 namespace MySpot.Infrastructure.Services.UseCases.Security.Implementation;
 
-internal sealed class PasswordManager : IPasswordManager
+public sealed class PasswordManager : IPasswordManager
 {
     private readonly IPasswordHasher<User> _passwordHasher;
 

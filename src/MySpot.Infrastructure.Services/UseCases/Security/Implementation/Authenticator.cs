@@ -10,7 +10,7 @@ using MySpot.Infrastructure.Services.UseCases.Security.Models;
 
 namespace MySpot.Infrastructure.Services.UseCases.Security.Implementation;
 
-internal sealed class Authenticator : IAuthenticator
+public sealed class Authenticator : IAuthenticator
 {
     private readonly string _audience;
     private readonly IClock _clock;

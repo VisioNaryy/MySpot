@@ -4,7 +4,7 @@ using MySpot.Infrastructure.Services.UseCases.Security.Models;
 
 namespace MySpot.Infrastructure.Services.UseCases.Security.Implementation;
 
-internal sealed class HttpContextTokenStorage : ITokenStorage
+public sealed class HttpContextTokenStorage : ITokenStorage
 {
     private const string TokenKey = "jwt";
     private readonly IHttpContextAccessor _httpContextAccessor;
